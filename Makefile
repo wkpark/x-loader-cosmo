@@ -216,7 +216,7 @@ cosmo_su760_rev_a_config :    unconfig
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cosmopolitan.h>" >>./include/config.h
 	echo "#define CONFIG_COSMO_REV_C 1" >> ./include/config.h
-	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h ;\
+	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h
 	@[ -z "$(findstring su760,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -227,7 +227,7 @@ cosmo_su760_rev_b_config :    unconfig
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cosmopolitan.h>" >>./include/config.h
 	echo "#define CONFIG_COSMO_REV_D 1" >> ./include/config.h
-	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h ;\
+	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h
 	@[ -z "$(findstring su760,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -238,7 +238,7 @@ cosmo_su760_rev_d_config :    unconfig
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cosmopolitan.h>" >>./include/config.h
 	echo "#define CONFIG_COSMO_REV_11 1" >> ./include/config.h
-	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h ;\
+	echo "#define CONFIG_COSMO_SU760 1" >> ./include/config.h
 	@[ -z "$(findstring su760,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -250,7 +250,7 @@ cx2_evb_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_EVB 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_EVB 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -261,7 +261,7 @@ cx2_rev_a_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_A 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_A 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -272,7 +272,7 @@ cx2_rev_b_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_B 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_B 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -283,7 +283,7 @@ cx2_rev_c_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_C 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_C 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -294,7 +294,7 @@ cx2_rev_d_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_D 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_D 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -305,7 +305,7 @@ cx2_rev_1.0_mipi_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_10 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_10 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -316,7 +316,7 @@ cx2_rev_1.11_config :    unconfig
 	@./mkconfig $(@:_config=) arm omap4 cx2
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
-	echo "#define CONFIG_COSMO_REV_11 1" >> ./include/config.h;\
+	echo "#define CONFIG_COSMO_REV_11 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -328,7 +328,7 @@ cx2_su870_rev_a_mipi_config :    unconfig
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
 	echo "#define CONFIG_COSMO_REV_A 1" >> ./include/config.h
-	echo "#define CONFIG_COSMO_SU870 1" >> ./include/config.h ;\
+	echo "#define CONFIG_COSMO_SU870 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"	>>./include/config.h ; \
 		  echo "MPU at 1GHz revision.." ; \
@@ -339,7 +339,7 @@ cx2_su870_rev_b_mipi_config : unconfig
 	echo "/* Generarated file. Do not edit */" >./include/config.h
 	echo "#include <configs/cx2.h>" >>./include/config.h
 	echo "#define CONFIG_COSMO_REV_B 1" >> ./include/config.h;
-	echo "#define CONFIG_COSMO_SU870 1" >> ./include/config.h ;\
+	echo "#define CONFIG_COSMO_SU870 1" >> ./include/config.h
 	@[ -z "$(findstring cx2,$@)" ] || \
 		{ echo "#define CONFIG_MPU_1000 1"      >>./include/config.h ; \
 	 	  echo "MPU at 1GHz revision.." ; \
