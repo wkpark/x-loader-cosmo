@@ -33,7 +33,7 @@ COBJS	= board.o ecc_256.o ecc_512.o printf.o div0.o
 
 OBJS	= $(AOBJS) $(COBJS)
 
-include ../../../../system/fota/build/boot/xloader_fota.mk
+#include ../../../../system/fota/build/boot/xloader_fota.mk
 
 $(LIB):	.depend $(OBJS)
 	$(AR) crv $@ $(OBJS)

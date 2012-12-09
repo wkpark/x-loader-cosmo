@@ -4,8 +4,10 @@
 #include <mmc.h>
 #include <asm/io.h>
 
+#ifdef CONFIG_LGE_FOTA_FEATURE
 #include	"lge_fota_std.h"
 #include	"oem_usd.h"
+#endif
 
 #ifdef CFG_PRINTF
 int print_info(void)
@@ -65,6 +67,7 @@ int mmc_read_bootloader(int dev)
 		if (size == -1)
 			return -1;
 	} else {
+#ifdef CONFIG_LGE_FOTA_FEATURE
 		sUpdateStatus	*mUSD;
 		ua_u32			uiFOTAPartiAddr;
 		ua_u32			uiPartitionAddr;
@@ -97,6 +100,7 @@ int mmc_read_bootloader(int dev)
 							uiPartitionSize);
 		}
 		else
+#endif
 		{
 
 #if 1
