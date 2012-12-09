@@ -1,0 +1,103 @@
+#!/bin/bash
+
+
+#-------------------------------------------------------------------------------
+# function which displays parameters and dies.
+# parameter: type of error
+#-------------------------------------------------------------------------------
+function DisplaySyntaxAndDie {
+  echo "Error: $1"
+  echo "Usage: generate_MLO <ES version targeted> <unsigned_xloader_file>"
+  echo "ES version targeted can be ES2.0, ES2.1, ES2.2" 
+  echo "Example: generate_MLO ES2.2 myxloader.bin"
+  exit
+  
+}
+
+
+
+
+
+
+
+
+  echo "**********************************************************************************"
+  echo "       (C) 2010 TEXAS INSTRUMENTS FRANCE. WTBU. All rights reserved             "
+  echo "            MLO generation script for OMAP4 ESx.x HS devices                    "
+  echo "                                                                                "
+  echo " Recipient agrees that it will not knowingly export or re-export, directly or   "
+  echo " indirectly, any product or technical data (as defined by the U.S, EU and other "
+  echo " Export Administration Regulations) including software, or any controlled       "
+  echo " product restricted by other applicable national regulations, received from     "
+  echo " Disclosing party under this Agreement, or any direct product of such           "
+  echo " technology, to any destination to which such export or re-export is restricted "
+  echo " or prohibited by U.S or other applicable laws, without obtaining prior         "
+  echo " authorisation from U.S. Department of Commerce and other competent Government  "
+  echo " authorities to the extent required by those laws. This provision shall survive "
+  echo " termination or expiration of this Agreement. According to our best knowledge   "
+  echo " of the state and end-use of this product or technology, and in compliance with "
+  echo " the export control regulations of dual-use goods in force in the origin and    "
+  echo " exporting countries, this technology is classified as follows:                 "
+  echo "     -US ECCN: 5E002                                                            "
+  echo "     -EU ECCN: 5E002                                                            "
+  echo " and may require export or re-export license for shipping it in compliance      "
+  echo " with certain countries regulations.                                            "
+  echo "**********************************************************************************"
+CHIP_VERSION="es2"
+IFT_DIR="./ift"
+IFT_EXE="$IFT_DIR/ift"
+CURRENT_PATH=$(pwd)
+
+
+
+
+#--------------------------# check parameters  ---------------------------------
+if  [ $# -lt 2 ]
+then
+    DisplaySyntaxAndDie "missing parameter"
+fi
+
+#--------------------- retrieving targeted chip version ------------------------
+ParameterChipVersion=$1
+case $1 in 
+  ES2.0 )
+        CHIP_VERSION="es2.0" ;;
+  ES2.1 )
+        CHIP_VERSION="es2.0" ;;
+  ES2.2 )
+        CHIP_VERSION="es2.2" ;;
+  HS )
+        CHIP_VERSION="hs2.2" ;;
+  * )   
+        DisplaySyntaxAndDie "version of chip ($1) not supported " ;;
+esac
+
+
+#--------------------- retrieving x-loader file --------------------------------
+if [ -f $2 ]
+then
+    XloaderFile=$2
+else
+    DisplaySyntaxAndDie "cannot find file $2"
+fi
+
+
+#--------------------- setting parameters  --------------------------------
+IFT_CFG_DIR="./reference/$CHIP_VERSION/ref-config"
+PPA_DIR="./reference/$CHIP_VERSION/ref-ppa"
+
+# for legal reason, we cannot link all openssl libs statically in ift code
+# so we need to access .so files corresponding to the 1.0.0a release
+# to avoid making the end user recompiling the openssl library, we set the path 
+# below in order that "so" files are found at dynamic link by linux
+export LD_LIBRARY_PATH=$CURRENT_PATH/ift/lib/lib_linux_32b:${LD_LIBRARY_PATH}
+
+echo -------------------------------------------------------------------------
+echo "Signing for target $ParameterChipVersion"
+echo -------------------------------------------------------------------------
+$IFT_EXE M -image -iswtype "MLO" -out MLO \
+                                 -keycfg $IFT_CFG_DIR/key_m.cfg\
+                                 -ppacfg $IFT_CFG_DIR/ppa_m.cfg\
+                                 -iswcfg $IFT_CFG_DIR/isw_m.cfg\
+                                 -isw $XloaderFile\
+                                 -ppa $PPA_DIR/ppa_ref.emu
