@@ -102,9 +102,14 @@ int mmc_read_bootloader(int dev)
 		else
 #endif
 		{
+			char tmp[512];
+			int offset = 0;
 
+			/* check signing and ignore conditionally */
+			ret = mmc_read(dev, EMMC_UBOOT_START/EMMC_BLOCK_SIZE, (unsigned char *)tmp, 512);
+			if (!strncmp(tmp, "CertISW", 7)) offset = 0x350;
 #if 1
-			 ret = mmc_read(dev, EMMC_UBOOT_START/EMMC_BLOCK_SIZE, (unsigned char *)CFG_LOADADDR,
+			 ret = mmc_read(dev, EMMC_UBOOT_START/EMMC_BLOCK_SIZE, (unsigned char *)(CFG_LOADADDR - offset),
 								(EMMC_UBOOT_END - EMMC_UBOOT_START));
 #else
 			 ret = mmc_read(dev, 0x400, (unsigned char *)CFG_LOADADDR,
